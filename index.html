@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#073b68">
+<title>PUENTE LABORAL | La Paz - El Alto</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f7fb;color:#18334b}
+header{background:#073b68;color:white;padding:22px 16px;text-align:center}
+.logo{font-size:42px}
+h1{margin:8px 0;font-size:27px}
+header p{margin:6px}
+main{max-width:850px;margin:auto;padding:20px}
+.hero{background:linear-gradient(135deg,#087b91,#073b68);color:white;padding:35px 20px;border-radius:18px;text-align:center}
+.hero h2{font-size:30px;margin:0 0 12px}
+.card{background:white;padding:22px;margin:18px 0;border-radius:15px;box-shadow:0 3px 15px #1232}
+button,.btn{display:block;width:100%;padding:15px;border:0;border-radius:10px;background:#079b76;color:white;font-size:16px;font-weight:bold;margin-top:12px;text-decoration:none;text-align:center;cursor:pointer}
+.secondary{background:#087bba}
+input,select,textarea{width:100%;padding:13px;margin:7px 0 14px;border:1px solid #bdcbd8;border-radius:8px;font-size:16px}
+label{font-weight:bold}
+footer{text-align:center;padding:25px;background:#073b68;color:white}
+.hidden{display:none}
+.small{font-size:13px;color:#617487}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">🤝</div>
+<h1>PUENTE LABORAL</h1>
+<p>LA PAZ - EL ALTO BOLIVIA</p>
+<p>Conectamos talento con oportunidades.</p>
+</header>
+<main>
+<section class="hero">
+<h2>TU TALENTO MERECE UNA OPORTUNIDAD</h2>
+<p>Conectamos a personas que buscan trabajo con empresas que necesitan personal.</p>
+</section>
+
+<section class="card">
+<h2>¿Qué estás buscando?</h2>
+<button onclick="mostrar('trabajador')">BUSCO TRABAJO</button>
+<button class="secondary" onclick="mostrar('empresa')">SOY UNA EMPRESA Y NECESITO PERSONAL</button>
+</section>
+
+<section id="trabajador" class="card hidden">
+<h2>Registro de trabajador</h2>
+<form onsubmit="enviar(event,'trabajador')">
+<label>Nombres y apellidos</label>
+<input name="Nombre" required>
+<label>Edad (debes tener 18 años o más)</label>
+<input name="Edad" type="number" min="18" required>
+<label>Número de celular</label>
+<input name="Celular" type="tel" required>
+<label>Ciudad</label>
+<select name="Ciudad" required><option value="">Selecciona</option><option>La Paz</option><option>El Alto</option></select>
+<label>Zona donde vives</label>
+<input name="Zona" required>
+<label>¿Qué trabajo buscas?</label>
+<input name="Trabajo" required>
+<label>Experiencia</label>
+<select name="Experiencia"><option>Sin experiencia</option><option>Primer empleo</option><option>Con experiencia</option><option>Trabajo independiente</option></select>
+<label>Estudios</label>
+<select name="Estudios"><option>Sin estudios formales</option><option>Primaria</option><option>Secundaria</option><option>Técnico</option><option>Universitario</option></select>
+<label>Habilidades</label>
+<textarea name="Habilidades" rows="3"></textarea>
+<label>Disponibilidad</label>
+<select name="Disponibilidad"><option>Inmediata</option><option>Por las mañanas</option><option>Por las tardes</option><option>Por las noches</option></select>
+<label><input type="checkbox" required style="width:auto"> Acepto enviar estos datos a PUENTE LABORAL por WhatsApp.</label>
+<button type="submit">ENVIAR MI REGISTRO POR WHATSAPP</button>
+</form>
+</section>
+
+<section id="empresa" class="card hidden">
+<h2>Solicitud de personal</h2>
+<form onsubmit="enviar(event,'empresa')">
+<label>Nombre de la empresa</label>
+<input name="Empresa" required>
+<label>Persona de contacto</label>
+<input name="Contacto" required>
+<label>Celular de contacto</label>
+<input name="Celular" required>
+<label>Ciudad</label>
+<select name="Ciudad"><option>La Paz</option><option>El Alto</option></select>
+<label>Dirección o zona</label>
+<input name="Direccion" required>
+<label>¿Qué personal necesita?</label>
+<input name="Puesto" required>
+<label>¿Cuántas personas necesita?</label>
+<input name="Cantidad" type="number" min="1" required>
+<label>Requisitos</label>
+<textarea name="Requisitos" rows="3"></textarea>
+<label>¿Ofrece capacitación?</label>
+<select name="Capacitacion"><option>No</option><option>Sí</option></select>
+<label><input type="checkbox" required style="width:auto"> Acepto enviar estos datos por WhatsApp.</label>
+<button type="submit">SOLICITAR PERSONAL POR WHATSAPP</button>
+</form>
+</section>
+
+<section class="card">
+<h2>Contacto</h2>
+<p>¿Necesitas ayuda? Comunícate con PUENTE LABORAL.</p>
+<a class="btn" href="https://wa.me/59167158140?text=Hola%2C%20deseo%20informaci%C3%B3n%20de%20PUENTE%20LABORAL" target="_blank">CONTACTAR POR WHATSAPP</a>
+</section>
+<p class="small">Registro gratuito. Nunca pagues para postular a un empleo. No compartas documentos sensibles ni datos bancarios.</p>
+</main>
+<footer>PUENTE LABORAL · LA PAZ - EL ALTO · BOLIVIA</footer>
+<script>
+function mostrar(id){
+document.getElementById('trabajador').classList.add('hidden');
+document.getElementById('empresa').classList.add('hidden');
+document.getElementById(id).classList.remove('hidden');
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+function enviar(event,tipo){
+event.preventDefault();
+const form=event.target;
+const datos=new FormData(form);
+let mensaje='PUENTE LABORAL - '+(tipo==='trabajador'?'REGISTRO DE TRABAJADOR':'SOLICITUD DE EMPRESA')+'\n\n';
+for(const [campo,valor] of datos.entries()){
+if(campo!=='on') mensaje+=campo+': '+valor+'\n';
+}
+mensaje+='\nEnviado con consentimiento del usuario.';
+window.open('https://wa.me/59167158140?text='+encodeURIComponent(mensaje),'_blank');
+}
+</script>
+</body>
+</html>
